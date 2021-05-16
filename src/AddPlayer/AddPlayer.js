@@ -11,29 +11,18 @@ class AddPlayer extends React.Component {
         }
     }
 
-    callbackFunction = () => {
+    callbackFunction = (e) => {
+        e.preventDefault();
         const name = document.getElementById("pname").value;
-        console.log('callback');
-        console.log(name);
         this.props.onAddPlayer(name);
     }
 
     render() {
-        var clss;
-        if(this.state.selected) {
-            clss = 'container selected';
-        } else {
-            if (this.state.excluded) {
-                clss = 'container excluded';
-            } else {
-                clss = 'container default';
-            }
-        }
         return (
-            <div className={clss} onClick={this.toggleSelected} onContextMenu={(e)=> this.toggleExcluded(e)}>
-                <form id="frm1" action="/action_page.php">
-                    Add Player: <input type="text" id="pname"/>
-                    <input type="button" onClick={this.callbackFunction} value="Submit"/>
+            <div className='form'>
+                <form id="frm1" onSubmit={(e) => this.callbackFunction(e)}>
+                    <input type="button" onClick={(e) => this.callbackFunction(e)} value="Add Player"/>
+                    <input type="text" id="pname"/>
                 </form>
             </div>
         );

@@ -1,4 +1,6 @@
 .playerContainer {
-	margin: 50px;
-	width: 500px;
+	margin: 10px;
+	width: 40vw;
+	float: right;
+	background-color: #444;
 }
